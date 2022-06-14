@@ -18,7 +18,7 @@
     <div class="container main-container" id="app">
         <div class="row h-100">
             <div class="col-4 p-0">
-                <div class="d-flex flex-column h-100">
+                <div class="d-flex flex-column h-100 borded-right">
                     <div class="flex-shrink-0">
                         <div class="d-flex justify-content-between align-items-center bg-secondary p-2">
                             <div>
@@ -44,11 +44,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex-shrink-0">
-
+                    <div class="flex-shrink-0 p-2 bg-secondary">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-search-style" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="" aria-describedby="basic-addon1">
+                        </div>
                     </div>
-                    <div class="flex-grow-1 over-auto">
-
+                    <div class="flex-grow-1">
+                        <ul class="list-group list-group-flush">
+                            <!-- creo il ciclo v-for per gli li -->
+                            <li v-for="(contatto, i) in listaContatti" class="list-group-item">
+                                <div class="d-flex w-100" >
+                                    <img :src="`../img/avatar${contatto.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
+                                    <div>
+                                        <div>{{contatto.name}}</div>
+                                        <div><small>ultimo messaggio inviato</small></div>
+                                    </div>
+                                    <div class="last-message-hour"><small>12:00</small></div>
+                                </div>
+                            </li>
+                            
+                        </ul>
                     </div>
                 </div>
             </div>

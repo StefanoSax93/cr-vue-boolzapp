@@ -35,3 +35,19 @@
     text-align: center;
     line-height: 45px;
 }
+.btn-search-style {
+    background-color: white;
+    cursor: pointer;
+    width: 70px;
+    border: 1px solid lightgray;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.borded-right {
+    border-right: 1px solid lightgrey;
+}
+.last-message-hour {
+    justify-self: end;
+    flex-grow: 1;
+    text-align: right;
+}
