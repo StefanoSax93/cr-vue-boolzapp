@@ -177,4 +177,9 @@ const appVue = new Vue({
     listaContatti: contatti,
     currentIndex: 0,
   },
+  methods: {
+    changeIndex: function (index) {
+      this.currentIndex = index;
+    }
+  },
 });

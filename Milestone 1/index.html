@@ -55,12 +55,12 @@
                     <div class="flex-grow-1 overflow-auto">
                         <ul class="list-group list-group-flush overflow-auto">
                             <!-- creo il ciclo v-for per gli li -->
-                            <li v-for="(contatto, i) in listaContatti" class="list-group-item">
-                                <div class="d-flex w-100" >
+                            <li v-for="(contatto, i) in listaContatti" class="list-group-item" :class="{'bg-secondary' : currentIndex === i}" @click="changeIndex(i)">
+                                <div class="d-flex w-100 py-2" >
                                     <img :src="`../img/avatar${contatto.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
                                     <div>
-                                        <div>{{contatto.name}}</div>
-                                        <div class="negative-margin"><small>ultimo messaggio inviato</small></div>
+                                        <div><strong>{{contatto.name}}</strong></div>
+                                        <div class="negative-margin"><small>Ultimo messaggio inviato</small></div>
                                     </div>
                                     <div class="last-message-hour"><small>12:00</small></div>
                                 </div>
@@ -89,7 +89,23 @@
                         </div>
                     </div>
                     <div class="flex-grow-1 bg-chat overflow-chat">
-                        
+                        <div class="container p-3">
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="card bg-success border-0 ">
+                                    <div class="card-body">
+                                        {{listaContatti[currentIndex].messages[currentIndex].message}}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-start mb-3">
+                                <div class="card border-0">
+                                    <div class="card-body">
+                                        {{listaContatti[currentIndex].messages[currentIndex].message}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="flex-shrink-0 bg-secondary px-4 py-2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -97,7 +113,7 @@
                                 <i class="fa-solid fa-lg fa-face-smile"></i>
                             </div>
                             <div class="flex-grow-1 mx-5">
-                                <input type="text" class="form-control" placeholder="Inserisci un messaggio">
+                                <input type="text" class="form-control" placeholder="Scrivi un messaggio">
                             </div>
                             <div class="flex-shrink-0 text-muted">
                                 <i class="fa-solid fa-lg fa-microphone"></i>

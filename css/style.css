@@ -24,16 +24,16 @@
 }
 
 .my-avatar {
-    max-width: 45px;
+    max-width: 50px;
     aspect-ratio: 1/1;
 }
 .circle-bell {
     background-color: white;
     border-radius: 50%;
-    width: 46px;
+    width: 50px;
     aspect-ratio: 1/1;
     text-align: center;
-    line-height: 45px;
+    line-height: 50px;
 }
 .btn-search-style {
     background-color: white;
@@ -44,7 +44,7 @@
     border-bottom-right-radius: 0px;
 }
 .negative-margin {
-    margin-top: -5px;
+    margin-top: -6px;
 }
 .borded-right {
     border-right: 1px solid lightgrey;
@@ -58,7 +58,7 @@
     background-image: url(../img/mine.jpg);
 }
 .left-bar {
-    min-width: 500px;
+    min-width: 450px;
 }
 .overflow-chat {
     overflow-y: scroll;
