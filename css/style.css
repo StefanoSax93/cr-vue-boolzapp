@@ -1,0 +1,23 @@
+:root {
+    --bs-body-bg: #DADBD3;
+    --bs-color-primary: #009688;
+    --bs-color-secondary: #EAEAEA;
+    --bs-color-info: #8EDAFC;
+    --bs-success-rgb: 211, 249, 186;
+}
+
+.top-bar {
+    height: 100px;
+    background-color: var(--bs-color-primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.main-container {
+    background-color: white;
+    height: calc(100vh - 32px);
+    margin: 16px auto;
+    position: relative;
+}
