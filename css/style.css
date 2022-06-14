@@ -43,6 +43,9 @@
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+.negative-margin {
+    margin-top: -5px;
+}
 .borded-right {
     border-right: 1px solid lightgrey;
 }

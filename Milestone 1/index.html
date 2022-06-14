@@ -15,7 +15,7 @@
     
     <div class="top-bar"></div>
 
-    <div class="container main-container" id="app">
+    <div class="container main-container overflow-hidden" id="app">
         <div class="row h-100">
             <div class="col-4 p-0">
                 <div class="d-flex flex-column h-100 borded-right">
@@ -52,31 +52,44 @@
                             <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="" aria-describedby="basic-addon1">
                         </div>
                     </div>
-                    <div class="flex-grow-1">
-                        <ul class="list-group list-group-flush">
+                    <div class="flex-grow-1 overflow-auto">
+                        <ul class="list-group list-group-flush overflow-auto">
                             <!-- creo il ciclo v-for per gli li -->
                             <li v-for="(contatto, i) in listaContatti" class="list-group-item">
                                 <div class="d-flex w-100" >
                                     <img :src="`../img/avatar${contatto.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
                                     <div>
                                         <div>{{contatto.name}}</div>
-                                        <div><small>ultimo messaggio inviato</small></div>
+                                        <div class="negative-margin"><small>ultimo messaggio inviato</small></div>
                                     </div>
                                     <div class="last-message-hour"><small>12:00</small></div>
                                 </div>
-                            </li>
-                            
+                            </li> 
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-8 bg-success">
+            <div class="col-8 p-0 bg-success">
                 <div class="d-flex flex-column h-100">
-                    <div class="flex-shrink-0">
-
+                    <div class="flex-shrink-0 bg-ligth">
+                        <div class="d-flex justify-content-between align-items-center bg-secondary p-2">
+                            <div class="d-flex">
+                                <img :src="`../img/avatar${listaContatti[currentIndex].avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
+                            <div>
+                                <div><small>{{listaContatti[currentIndex].name}}</small></div>
+                                <div class="negative-margin text-muted"><small>Ultimo Accesso effettuato alle 12:00</small></div>
+                            </div>
+                            </div>
+                                
+                            <div class="text-light">
+                                <i class="fa-solid fa-lg fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-lg fa-paperclip px-2"></i>
+                                <i class="fa-solid fa-lg fa-ellipsis-vertical pe-2"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="flex-grow-1">
-
+                        
                     </div>
                     <div class="flex-shrink-0">
                         
