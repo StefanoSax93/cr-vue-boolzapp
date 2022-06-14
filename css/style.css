@@ -54,3 +54,12 @@
     flex-grow: 1;
     text-align: right;
 }
+.bg-chat {
+    background-image: url(../img/mine.jpg);
+}
+.left-bar {
+    min-width: 500px;
+}
+.overflow-chat {
+    overflow-y: scroll;
+}
