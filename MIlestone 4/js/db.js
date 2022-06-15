@@ -199,14 +199,14 @@ const appVue = new Vue({
     },
     addMessage() {
       if(this.newMessage) {
-        this.listaContatti[this.currentIndex].messages.push({
+        this.currentUser.messages.push({
           message: this.newMessage,
           status: "sent",
         });
         this.newMessage = "";
 
         setTimeout(() => {
-          this.listaContatti[this.currentIndex].messages.push({
+          this.currentUser.messages.push({
             message: "Ok",
             status: "received",
           });
