@@ -177,6 +177,7 @@ const appVue = new Vue({
     currentUser: contatti[0],
     newMessage: "",
     search: "",
+    
   },
 
   computed: {
@@ -197,9 +198,12 @@ const appVue = new Vue({
         return true;
       }
     },
+    
     addMessage() {
       if(this.newMessage) {
         this.currentUser.messages.push({
+          //voglio prendere solo ore e minuti dalla nuova data
+          date: new Date().toLocaleTimeString(),
           message: this.newMessage,
           status: "sent",
         });
@@ -207,12 +211,21 @@ const appVue = new Vue({
 
         setTimeout(() => {
           this.currentUser.messages.push({
+            date: new Date().toLocaleTimeString(),
             message: "Ok",
             status: "received",
           });
         }, 1000);
       }
     },
-    
+    // creo una funzione per ottenere l'ultimo messaggio ricevuto
+    getLastMessage(contatto) {
+      return contatto.messages[contatto.messages.length - 1].message;
+    },
+    //creo una funzione per ottenere l'ora dell'ultimo messaggio ricevuto
+    getLastMessageTime(contatto) {
+      let lastMessageTime= contatto.messages[contatto.messages.length - 1].date;
+      return lastMessageTime;
+    }
   },
 });
