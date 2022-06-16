@@ -236,6 +236,14 @@ const appVue = new Vue({
       let lastMessageTime= contatto.messages[contatto.messages.length - 1].date;
       return dayjs(lastMessageTime,"DD/MM/YYYY HH:mm").format("HH:mm");
     },
+    getLastMessageReceivedTime(contatto) {
+      if(contatto.messages[contatto.messages.length - 1].status === "received") {
+        let lastMessageTime= contatto.messages[contatto.messages.length - 1].date;
+        return dayjs(lastMessageTime,"DD/MM/YYYY HH:mm").format("HH:mm");
+      } else {
+        return "";
+      }
+    },
     //creo una funzione per formattare l'ora dell'ultimo messaggio ricevuto
     formatTime(i) {
       let dataFormattata= dayjs(this.currentUser.messages[i].date,"DD/MM/YYYY HH:mm").format("HH:mm");

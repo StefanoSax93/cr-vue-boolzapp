@@ -84,7 +84,8 @@
                                 <img :src="`../img/avatar${currentUser.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
                                 <div>
                                     <div><small>{{currentUser.name}}</small></div>
-                                    <div class="negative-margin text-muted"><small>Ultimo Accesso effettuato alle 12:00</small></div>
+                                    
+                                    <div class="negative-margin text-muted"><small>{{`Ultimo Accesso effettuato alle ${getLastMessageReceivedTime(currentUser)}`}}</small></div>
                                 </div>
                             </div>
                                 
@@ -105,7 +106,7 @@
                                             <div class="dropdown">
                                                 <button class="dropdown-toggle border-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                    <li><button class="dropdown-item" @click="deleteMessage">Cancella messaggio</button></li>
+                                                    <li><button class="dropdown-item" @click="deleteMessage(i)">Cancella messaggio</button></li>
                                                     <li><button class="dropdown-item">Info messaggio</button></li>
                                                 </ul>
                                             </div>
