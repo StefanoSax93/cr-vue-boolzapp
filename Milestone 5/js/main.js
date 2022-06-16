@@ -241,6 +241,10 @@ const appVue = new Vue({
       let dataFormattata= dayjs(this.currentUser.messages[i].date,"DD/MM/YYYY HH:mm").format("HH:mm");
       return dataFormattata;
     },
+    //creo una funzione per cancellare il messaggio clicckato
+    deleteMessage(i) {
+      this.currentUser.messages.splice(i, 1);
+    }
   },
 });
 // @ts-ignore

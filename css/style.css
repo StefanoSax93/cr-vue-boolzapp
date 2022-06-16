@@ -69,3 +69,6 @@
     right: 5px;
     bottom: 3px;
 }
+.dropdown-toggle {
+    background-color: transparent;
+}
