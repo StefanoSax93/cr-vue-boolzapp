@@ -177,7 +177,7 @@ const appVue = new Vue({
     currentUser: contatti[0],
     newMessage: "",
     search: "",
-    
+    pendingResponseUser: null,
   },
 
   computed: {
@@ -209,12 +209,15 @@ const appVue = new Vue({
         });
         this.newMessage = "";
 
+        this.pendingResponseUser = this.currentUser;
+
         setTimeout(() => {
-          this.currentUser.messages.push({
+          this.pendingResponseUser.messages.push({
             date: new Date().toLocaleTimeString(),
             message: "Ok",
             status: "received",
           });
+          this.pendingResponseUser = null;
         }, 1000);
       }
     },
