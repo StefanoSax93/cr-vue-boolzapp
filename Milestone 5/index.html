@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp 5</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==' crossorigin='anonymous'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.min.css' integrity='sha512-o/MhoRPVLExxZjCFVBsm17Pkztkzmh7Dp8k7/3JrtNCHh0AQ489kwpfA3dPSHzKDe8YCuEhxXq3Y71eb/o6amg==' crossorigin='anonymous'/>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.bundle.min.js' integrity='sha512-ndrrR94PW3ckaAvvWrAzRi5JWjF71/Pw7TlSo6judANOFCmz0d+0YE+qIGamRRSnVzSvIyGs4BTtyFMm3MT/cg==' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <script src="https://unpkg.com/dayjs@1.9.8/dayjs.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.8/plugin/customParseFormat.min.js'
+        integrity='sha512-/rAikt6xZJcTqu7olN/2DFvqXDEUC31/yyFAYrSGi087R+j54QTWWRJxHtbN5NjppOxT3d1gk4ZwkPWX88W35w==' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.0/vue.js' integrity='sha512-4EMifNzsGH/ixIeXTy7stkY1hrlVrYfOXlBBG0sGkCtVzHoCsyVxfXkzILZAMs/TI6MBrfDDK9YYWmhaG6BF2A==' crossorigin='anonymous'></script>
+</head>
+<body>
+    
+    <div class="top-bar"></div>
+
+    <div class="container main-container p-0" id="app">
+        <div class="d-flex h-100">
+            <div class="flex-shrink-0 left-bar">
+                <div class="d-flex flex-column h-100 borded-right">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center bg-secondary p-2">
+                            <div>
+                                <img src="../img/avatar_io.jpg" alt="" class="rounded-circle my-avatar">
+                                <span>Sofia</span>
+                            </div>
+                                
+                            <div class="text-light">
+                                <i class="fa-solid fa-lg fa-circle-notch"></i>
+                                <i class="fa-solid fa-lg fa-message px-2"></i>
+                                <i class="fa-solid fa-lg fa-ellipsis-vertical pe-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-info p-3">
+                        <div class="d-flex gap-2 align-items-center-center">
+                            <div class="circle-bell">
+                                <i class="fa-solid fa-lg fa-bell-slash text-info"></i>     
+                            </div>
+                            <div>
+                                <div><small>Ricevi notifiche di nuovi messaggi</small></div>
+                                <a href="" class="text-muted"><small>Attiva notifiche desktop</small></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2 bg-secondary">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-search-style" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model="search" aria-label="" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 overflow-auto">
+                        <ul class="list-group list-group-flush overflow-auto">
+                            <!-- creo il ciclo v-for per gli li -->
+                            <li v-for="(contatto, i) in filteredList" class="list-group-item" :class="{'bg-secondary' : currentUser === contatto}" @click="changeUser(contatto)">
+                                <div class="d-flex w-100 py-2" >
+                                    <img :src="`../img/avatar${contatto.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
+                                    <div>
+                                        <div><strong>{{contatto.name}}</strong></div>
+                                        <div class="negative-margin"><small>{{getLastMessage(contatto)}}</small></div>
+                                    </div>
+                                    <div class="last-message-hour"><small>{{getLastMessageTime(contatto)}}</small></div>
+                                </div>
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-grow-1 overflow-hidden">
+                <div class="d-flex flex-column h-100">
+                    <div class="flex-shrink-0 bg-ligth">
+                        <div class="d-flex justify-content-between align-items-center bg-secondary p-2">
+                            <div class="d-flex">
+                                <img :src="`../img/avatar${currentUser.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
+                                <div>
+                                    <div><small>{{currentUser.name}}</small></div>
+                                    <div class="negative-margin text-muted"><small>Ultimo Accesso effettuato alle 12:00</small></div>
+                                </div>
+                            </div>
+                                
+                            <div class="text-light">
+                                <i class="fa-solid fa-lg fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-lg fa-paperclip px-2"></i>
+                                <i class="fa-solid fa-lg fa-ellipsis-vertical pe-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 bg-chat overflow-chat">
+                        <div class="container p-3">
+                            <div v-for="(contatto,i) in currentUser.messages" class="d-flex mb-3" :class="{'justify-content-end' : getStatus(contatto.status) , 'justify-content-start' : !getStatus(contatto.status)}">
+                                <div class="card border-0" :class="{'bg-success' : getStatus(contatto.status) , 'bg-white' : !getStatus(contatto.status)}">
+                                    <div class="card-body px-0">
+                                        <div class="d-flex ps-2 pe-1">
+                                            <div>{{contatto.message}}</div>
+                                            <div class="ms-4"><small><i class="fa-solid fa-angle-down"></i></small></div>
+                                            <div class="message-hour"><small>{{formatTime(i)}}</small></div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 bg-secondary px-4 py-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="flex-shrink-0 text-muted">
+                                <i class="fa-solid fa-lg fa-face-smile"></i>
+                            </div>
+                            <div class="flex-grow-1 mx-5">
+                                <input type="text" class="form-control" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="addMessage">
+                            </div>
+                            <div class="flex-shrink-0 text-muted">
+                                <i class="fa-solid fa-lg fa-microphone"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
