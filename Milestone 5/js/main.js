@@ -238,7 +238,7 @@ const appVue = new Vue({
     },
     //creo una funzione per formattare l'ora dell'ultimo messaggio ricevuto
     formatTime(i) {
-      let dataFormattata= dayjs(this.currentUser.messages[i].date).format("HH:mm");
+      let dataFormattata= dayjs(this.currentUser.messages[i].date,"DD/MM/YYYY HH:mm").format("HH:mm");
       return dataFormattata;
     },
   },
