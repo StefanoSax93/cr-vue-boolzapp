@@ -229,14 +229,24 @@ const appVue = new Vue({
     },
     // creo una funzione per ottenere l'ultimo messaggio ricevuto
     getLastMessage(contatto) {
+      if(contatto.messages.length === 0) {
+        return "";
+      }
       return contatto.messages[contatto.messages.length - 1].message;
     },
     //creo una funzione per ottenere l'ora dell'ultimo messaggio ricevuto
     getLastMessageTime(contatto) {
+      if(contatto.messages.length === 0) {
+        return "";
+      }
       let lastMessageTime= contatto.messages[contatto.messages.length - 1].date;
       return dayjs(lastMessageTime,"DD/MM/YYYY HH:mm").format("HH:mm");
     },
     getLastMessageReceivedTime(contatto) {
+      if(contatto.messages.length === 0) {
+        return "";
+      }
+      
       if(contatto.messages[contatto.messages.length - 1].status === "received") {
         let lastMessageTime= contatto.messages[contatto.messages.length - 1].date;
         return dayjs(lastMessageTime,"DD/MM/YYYY HH:mm").format("HH:mm");
@@ -251,6 +261,7 @@ const appVue = new Vue({
     },
     //creo una funzione per cancellare il messaggio clicckato
     deleteMessage(i) {
+      //se l'array ha più di un elemento
       this.currentUser.messages.splice(i, 1);
     }
   },
