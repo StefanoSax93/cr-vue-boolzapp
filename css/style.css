@@ -71,4 +71,8 @@
 }
 .dropdown-toggle {
     background-color: transparent;
+    opacity: 0;
+}
+.dropdown-toggle:hover {
+    opacity: 1;
 }
