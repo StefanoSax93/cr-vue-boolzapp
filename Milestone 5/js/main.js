@@ -232,7 +232,11 @@ const appVue = new Vue({
       if(contatto.messages.length === 0) {
         return "";
       }
-      return contatto.messages[contatto.messages.length - 1].message;
+      if(contatto.messages[contatto.messages.length - 1].status === "sent") {
+        return `Tu: ${contatto.messages[contatto.messages.length - 1].message}`;
+      } else {
+        return `${contatto.name}: ${contatto.messages[contatto.messages.length - 1].message}`;
+      }
     },
     //creo una funzione per ottenere l'ora dell'ultimo messaggio ricevuto
     getLastMessageTime(contatto) {
