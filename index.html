@@ -10,7 +10,7 @@
     <!-- links bootstrap -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.min.css' integrity='sha512-o/MhoRPVLExxZjCFVBsm17Pkztkzmh7Dp8k7/3JrtNCHh0AQ489kwpfA3dPSHzKDe8YCuEhxXq3Y71eb/o6amg==' crossorigin='anonymous'/>
     <!-- link css -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- links dayjs -->
     <script src="https://unpkg.com/dayjs@1.9.8/dayjs.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.8/plugin/customParseFormat.min.js'
@@ -29,7 +29,7 @@
                     <div>
                         <div class="d-flex justify-content-between align-items-center bg-secondary p-2">
                             <div>
-                                <img src="../img/avatar_io.jpg" alt="" class="rounded-circle my-avatar">
+                                <img src="img/avatar_io.jpg" alt="" class="rounded-circle my-avatar">
                                 <span>Sofia</span>
                             </div>
                                 
@@ -64,7 +64,7 @@
                             <!-- creo il ciclo v-for per gli li -->
                             <li v-for="(contatto, i) in filteredList" class="list-group-item" :class="{'bg-secondary' : currentUser === contatto}" @click="changeUser(contatto)">
                                 <div class="d-flex w-100 py-2" >
-                                    <img :src="`../img/avatar${contatto.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
+                                    <img :src="`img/avatar${contatto.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
                                     <div>
                                         <div><strong>{{contatto.name}}</strong></div>
                                         <div class="negative-margin"><small>{{getLastMessage(contatto)}}</small></div>
@@ -81,7 +81,7 @@
                     <div class="flex-shrink-0 bg-ligth">
                         <div class="d-flex justify-content-between align-items-center bg-secondary p-2">
                             <div class="d-flex">
-                                <img :src="`../img/avatar${currentUser.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
+                                <img :src="`img/avatar${currentUser.avatar}.jpg`" alt="" class="rounded-circle my-avatar me-2">
                                 <div>
                                     <div><small>{{currentUser.name}}</small></div>
                                     
